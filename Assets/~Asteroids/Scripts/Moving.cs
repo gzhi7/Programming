@@ -8,50 +8,53 @@ using UnityEngine;
 // [] - Brackets
 // () - Parentheses
 
-public class Moving : MonoBehaviour
+namespace Asteroids
 {
-   //Member Variables
-    public float rotationSpeed = 360;
-    public float movementSpeed = 10;
-    
-    void Movement()
+    public class Moving : MonoBehaviour
     {
-        // if the player is pressing the up arrow
-        if (Input.GetKey(KeyCode.UpArrow))
+        //Member Variables
+        public float rotationSpeed = 360;
+        public float movementSpeed = 10;
+
+        void Movement()
         {
-            // Move the player up by movementSpeed
-            //Vector3 position = transform.position;
-            //position.y += movementSpeed * Time.deltaTime;
-            //transform.position = position;
-            transform.Translate(Vector3.up * movementSpeed * Time.deltaTime);
+            // if the player is pressing the up arrow
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                // Move the player up by movementSpeed
+                //Vector3 position = transform.position;
+                //position.y += movementSpeed * Time.deltaTime;
+                //transform.position = position;
+                transform.Translate(Vector3.up * movementSpeed * Time.deltaTime);
+            }
+
+            // Move down
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                transform.Translate(Vector3.down * movementSpeed * Time.deltaTime);
+            }
         }
 
-        // Move down
-        if (Input.GetKey(KeyCode.DownArrow))
+        //Task: Make a Rotate() function and put rotation code in it
+
+        void Rotation()
         {
-            transform.Translate(Vector3.down * movementSpeed * Time.deltaTime);
+            // Rotate Right
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            //Call 'Movement()' function 
+            Movement();
+
+            //Call 'Rotation()' function
+            Rotation();
+
         }
     }
-
-    //Task: Make a Rotate() function and put rotation code in it
-
-    void Rotation()
-    {
-        // Rotate Right
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
-        }
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        //Call 'Movement()' function 
-        Movement();
-
-        //Call 'Rotation()' function
-        Rotation();
-       
-     }
 }
