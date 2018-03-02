@@ -9,13 +9,16 @@ namespace GoneHome
     public class Enemy : MonoBehaviour
     {
         public Transform target;
-
         private NavMeshAgent agent;
+
+        private Vector3 spawnPoint;
 
         // Use this for initialization
         void Start()
         {
             agent = GetComponent<NavMeshAgent>();
+
+            spawnPoint = transform.position;
         }
 
         // Update is called once per frame
@@ -23,6 +26,14 @@ namespace GoneHome
         {
             agent.SetDestination(target.position);
         }
+
+        public void Reset()
+        {
+            agent.enabled = false;
+            transform.position = spawnPoint;
+            agent.enabled = true;
+        }
+
     }
 
 }
