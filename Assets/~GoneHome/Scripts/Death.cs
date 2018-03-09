@@ -5,17 +5,17 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace GoneHome
-{ 
- public class Death : MonoBehaviour
 {
+    public class Death : MonoBehaviour
+    {
         public UnityEvent onDeath;
 
-void OnTriggerEnter(Collider other)
+        void OnTriggerEnter(Collider other)
         {
             //Check if the entity came into contact
             //with a death object
-            if(other.name.Contains("DeathZone") ||
-               other.name.Contains ("Enemy"))
+            if (other.name.Contains("DeathZone") ||
+               other.name.Contains("Enemy"))
             {
                 // Fire off death event
                 onDeath.Invoke();
